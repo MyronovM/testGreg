@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Awesome Landing Page</title>
+    <!-- Web Awesome CSS -->
+    <link rel="stylesheet" href="https://cdn.webawesome.com/webawesome.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="wa-header wa-bg-primary-900 wa-text-white wa-p-4">
+        <div class="wa-container wa-mx-auto wa-flex wa-justify-between wa-items-center">
+            <a href="#" class="wa-logo wa-text-2xl wa-font-bold wa-flex wa-items-center">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="wa-mr-2">
+                    <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 12L2 7M12 12L22 7M12 12V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                WebAwesome App
+            </a>
+            <nav class="wa-nav" id="main-nav">
+                <ul class="wa-nav-list">
+                    <li><a href="#" class="wa-nav-link wa-hover-text-primary-300">Home</a></li>
+                    <li><a href="#" class="wa-nav-link wa-hover-text-primary-300">Features</a></li>
+                    <li><a href="#" class="wa-nav-link wa-hover-text-primary-300">Pricing</a></li>
+                    <li><a href="#" class="wa-nav-link wa-hover-text-primary-300">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="wa-button wa-button-secondary wa-button-icon wa-hidden-lg" aria-label="Toggle navigation" id="nav-toggle">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 12H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="wa-hero wa-bg-primary-100 wa-py-20 wa-text-center">
+            <div class="wa-container wa-mx-auto wa-grid wa-grid-cols-1 wa-gap-8 wa-items-center md:wa-grid-cols-2 wa-px-4">
+                <div class="wa-hero-content wa-text-left">
+                    <h1 class="wa-heading wa-heading-xl wa-text-primary-900 wa-mb-4">Unlock the Power of Modern Web UI</h1>
+                    <p class="wa-text-lg wa-text-gray-700 wa-mb-6">Build responsive, beautiful web experiences with ease using Web Awesome.</p>
+                    <div class="wa-flex wa-gap-4">
+                        <button class="wa-button wa-button-primary wa-button-lg">Get Started</button>
+                        <button popovertarget="more-info-popover" class="wa-button wa-button-secondary wa-button-lg">Learn More</button>
+                    </div>
+                </div>
+                <div class="wa-hero-image wa-flex wa-justify-center">
+                    <svg class="wa-w-full wa-max-w-md" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Simplified illustrative SVG for the hero section -->
+                        <rect x="50" y="50" width="500" height="300" rx="20" fill="#E0F2FE"/>
+                        <rect x="70" y="70" width="460" height="260" rx="10" fill="white"/>
+                        <line x1="100" y1="100" x2="500" y2="100" stroke="#007bff" stroke-width="4"/>
+                        <line x1="100" y1="130" x2="450" y2="130" stroke="#6c757d" stroke-width="2"/>
+                        <line x1="100" y1="160" x2="300" y2="160" stroke="#6c757d" stroke-width="2"/>
+                        <circle cx="500" cy="80" r="10" fill="#28A745"/>
+                        <circle cx="470" cy="80" r="10" fill="#FFC107"/>
+                        <circle cx="440" cy="80" r="10" fill="#DC3545"/>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section (with Container Queries and :has) -->
+        <section class="wa-features wa-py-20 wa-bg-white">
+            <div class="wa-container wa-mx-auto wa-text-center wa-px-4">
+                <h2 class="wa-heading wa-heading-xl wa-text-primary-900 wa-mb-12">Powerful Features</h2>
+                <div class="feature-cards-container">
+                    <div class="feature-card">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="wa-icon wa-mb-4 wa-text-primary-600">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 12L12 16L16 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <h3 class="wa-heading wa-heading-md wa-mb-2 wa-text-primary-800">Responsive Design</h3>
+                        <p class="wa-text-gray-600">Adapt to any screen size using media and container queries.</p>
+                    </div>
+                    <div class="feature-card">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="wa-icon wa-mb-4 wa-text-success-600">
+                            <path d="M10 13L15 8L21 14V17L15 11L10 16L3 9V6L10 13Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <h3 class="wa-heading wa-heading-md wa-mb-2 wa-text-primary-800">Dynamic UI</h3>
+                        <p class="wa-text-gray-600">Leverage :has and Popover API for engaging interfaces.</p>
+                    </div>
+                    <div class="feature-card has-image">
+                        <img src="https://via.placeholder.com/60" alt="SVG Magic Icon" class="wa-mb-4 wa-rounded-full">
+                        <h3 class="wa-heading wa-heading-md wa-mb-2 wa-text-primary-800">SVG Magic</h3>
+                        <p class="wa-text-gray-600">Scalable, high-performance vector graphics everywhere!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="wa-footer wa-bg-primary-900 wa-text-white wa-py-8 wa-text-center">
+        <div class="wa-container wa-mx-auto">
+            <p>&copy; 2024 Web Awesome App. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Popover for "Learn More" -->
+    <div id="more-info-popover" popover class="wa-popover wa-bg-white wa-rounded wa-shadow-lg wa-p-4 wa-text-gray-800">
+        <h3 class="wa-heading wa-heading-sm wa-mb-2">More About Web Awesome</h3>
+        <p class="wa-text-sm wa-mb-4">Discover a comprehensive UI library with components, patterns, color variables, and modern web developer tools.</p>
+        <button popovertargetaction="hide" class="wa-button wa-button-sm wa-button-text">Close</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

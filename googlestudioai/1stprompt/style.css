@@ -1,0 +1,140 @@
+/* Import Web Awesome CSS */
+@import url('https://cdn.webawesome.com/webawesome.css');
+
+/* Custom Styles */
+
+/* Header & Navigation */
+.wa-header {
+    background-color: var(--wa-color-primary-900);
+    color: var(--wa-color-white);
+}
+
+.wa-logo svg {
+    fill: currentColor; /* Ensure SVG color adapts to parent */
+}
+
+.wa-nav-list {
+    display: flex;
+    gap: 1.5rem; /* Web Awesome spacing unit */
+}
+
+/* Media Queries for Navigation */
+@media (max-width: 768px) {
+    .wa-nav {
+        display: none; /* Hide navigation by default on small screens */
+        position: absolute;
+        top: 60px; /* Adjust based on header height */
+        left: 0;
+        right: 0;
+        background-color: var(--wa-color-primary-800);
+        flex-direction: column;
+        width: 100%;
+        padding: 1rem 0;
+        z-index: 10;
+    }
+
+    .wa-nav.active {
+        display: flex; /* Show when active */
+    }
+
+    .wa-nav-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .wa-nav-link {
+        padding: 0.75rem 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .wa-hidden-lg {
+        display: block; /* Show hamburger icon */
+    }
+}
+
+@media (min-width: 769px) {
+    .wa-hidden-lg {
+        display: none; /* Hide hamburger icon on larger screens */
+    }
+}
+
+/* Hero Section Adjustments */
+.wa-hero-content {
+    text-align: left;
+}
+
+/* Features Section - Container Queries */
+.feature-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Basic responsive grid */
+    gap: 2rem;
+    padding: 1rem; /* Acts as the container for container queries */
+
+    /* Define container type */
+    container-type: inline-size;
+    container-name: feature-container;
+}
+
+.feature-card {
+    background-color: var(--wa-color-white);
+    border-radius: var(--wa-rounded-lg);
+    box-shadow: var(--wa-shadow-md);
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid var(--wa-color-gray-200);
+    transition: transform 0.2s ease-in-out;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card svg {
+    width: 3rem; /* Web Awesome icon size */
+    height: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Container Query: Adjust layout of cards when container is wider */
+@container feature-container (min-width: 600px) {
+    .feature-card {
+        display: flex;
+        flex-direction: row;
+        text-align: left;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1.5rem 2rem;
+    }
+    .feature-card svg,
+    .feature-card img {
+        margin-bottom: 0;
+        flex-shrink: 0; /* Prevent icon/image from shrinking */
+    }
+    .feature-card h3 {
+        margin-bottom: 0.25rem;
+    }
+}
+
+/* :has pseudo-selector example */
+/* Change padding for cards that contain an <img> (e.g., SVG Magic card) */
+.feature-card:has(img) {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    background-color: var(--wa-color-blue-50); /* Slightly different background */
+}
+
+/* When a feature card with an image is in a wider container */
+@container feature-container (min-width: 600px) {
+    .feature-card:has(img) {
+        background-color: var(--wa-color-blue-50); /* Keep consistent */
+    }
+}
+
+
+/* Popover Styling (Web Awesome provides base, custom tweaks) */
+.wa-popover {
+    max-width: 300px;
+    border: 1px solid var(--wa-color-gray-300);
+    z-index: 1000; /* Ensure it's on top */
+}

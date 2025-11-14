@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Awesome Landing Page</title>
+
+  <!-- Web Awesome CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@webawesome/styles/dist/webawesome.min.css">
+
+  <style>
+    :root {
+      --brand-color: var(--wa-color-primary-500);
+      --text-color: var(--wa-color-gray-900);
+      --bg-color: var(--wa-color-surface);
+    }
+
+    body {
+      font-family: var(--wa-font-sans);
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: var(--wa-color-primary-100);
+      padding: var(--wa-space-4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header:has(nav a:hover) {
+      background-color: var(--wa-color-primary-200);
+    }
+
+    nav a {
+      color: var(--wa-color-primary-700);
+      text-decoration: none;
+      margin: 0 var(--wa-space-2);
+      font-weight: 600;
+    }
+
+    .hero {
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: var(--wa-space-10);
+    }
+
+    .hero svg {
+      width: 200px;
+      height: auto;
+      fill: var(--brand-color);
+      margin-bottom: var(--wa-space-6);
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      color: var(--brand-color);
+    }
+
+    .cta-button {
+      background-color: var(--brand-color);
+      color: white;
+      border: none;
+      border-radius: var(--wa-radius-lg);
+      padding: var(--wa-space-3) var(--wa-space-6);
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    /* Popover styling */
+    [popover] {
+      padding: var(--wa-space-4);
+      background: var(--wa-color-surface);
+      border-radius: var(--wa-radius-md);
+      border: 1px solid var(--wa-color-gray-200);
+      max-width: 300px;
+      text-align: left;
+    }
+
+    /* Container Query Example */
+    .feature-container {
+      container-type: inline-size;
+      display: flex;
+      gap: var(--wa-space-4);
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: var(--wa-space-10);
+    }
+
+    .feature-card {
+      background: var(--wa-color-gray-50);
+      border-radius: var(--wa-radius-lg);
+      padding: var(--wa-space-6);
+      flex: 1 1 300px;
+      max-width: 400px;
+      transition: transform 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+    }
+
+    @container (max-width: 400px) {
+      .feature-card {
+        background: var(--wa-color-primary-50);
+      }
+    }
+
+    /* Media query for responsiveness */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .cta-button {
+        width: 100%;
+      }
+    }
+
+    footer {
+      margin-top: auto;
+      background-color: var(--wa-color-gray-100);
+      padding: var(--wa-space-4);
+      text-align: center;
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <strong>WebAwesome</strong>
+    </div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Features</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 
+        10 10 10 10-4.48 10-10S17.52 2 
+        12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 
+        8-8 8 3.59 8 8-3.59 8-8 8z"/>
+    </svg>
+    <h1>Modern Web UI with Web Awesome</h1>
+    <p>Beautiful, responsive, and interactive components made easy.</p>
+    <button class="cta-button" popovertarget="info-pop">Learn More</button>
+
+    <div id="info-pop" popover>
+      <h3>Popover API in Action</h3>
+      <p>This message appears using the new Popover API — no extra JS required!</p>
+    </div>
+  </section>
+
+  <section class="feature-container">
+    <div class="feature-card">
+      <h2>⚡ Fast</h2>
+      <p>Built with performance-first components and modern CSS APIs.</p>
+    </div>
+    <div class="feature-card">
+      <h2>🎨 Beautiful</h2>
+      <p>Uses Web Awesome’s design tokens and color system for consistency.</p>
+    </div>
+    <div class="feature-card">
+      <h2>🔒 Secure</h2>
+      <p>Follows the latest best practices in browser compatibility and UX.</p>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Web Awesome Landing Demo. All rights reserved.
+  </footer>
+</body>
+</html>
