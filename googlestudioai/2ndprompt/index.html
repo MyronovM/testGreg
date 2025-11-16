@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Awesome Landing Page</title>
+    <!-- Web Awesome CSS - Pinned Version for reliability -->
+    <link rel="stylesheet" href="https://cdn.webawesome.com/v1.0.0-beta.1/webawesome.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Preconnect to CDN for faster loading -->
+    <link rel="preconnect" href="https://cdn.webawesome.com">
+</head>
+<body>
+    <header class="wa-header wa-bg-primary-900 wa-text-white wa-p-4 wa-shadow-md">
+        <div class="wa-container wa-mx-auto wa-flex wa-justify-between wa-items-center">
+            <a href="#" class="wa-logo wa-text-2xl wa-font-bold wa-flex wa-items-center">
+                <!-- Optimized SVG for Logo -->
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="wa-mr-2 wa-text-accent-400">
+                    <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 12L2 7M12 12L22 7M12 12V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="wa-text-accent-400">Web</span>Awesome
+            </a>
+            <nav class="wa-nav" id="main-nav">
+                <ul class="wa-nav-list wa-flex wa-gap-8">
+                    <li><a href="#" class="wa-nav-link wa-text-white wa-hover-text-accent-300 wa-transition-colors">Home</a></li>
+                    <li><a href="#" class="wa-nav-link wa-text-white wa-hover-text-accent-300 wa-transition-colors">Features</a></li>
+                    <li><a href="#" class="wa-nav-link wa-text-white wa-hover-text-accent-300 wa-transition-colors">Pricing</a></li>
+                    <li><a href="#" class="wa-nav-link wa-text-white wa-hover-text-accent-300 wa-transition-colors">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="wa-button wa-button-text wa-text-white wa-hidden-lg" aria-label="Toggle navigation" id="nav-toggle">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="wa-hero wa-bg-gradient-to-br wa-from-primary-100 wa-to-blue-50 wa-py-20 wa-text-center wa-relative wa-overflow-hidden">
+            <div class="wa-container wa-mx-auto wa-grid wa-grid-cols-1 wa-gap-12 wa-items-center md:wa-grid-cols-2 wa-px-4">
+                <div class="wa-hero-content wa-text-left">
+                    <h1 class="wa-heading wa-heading-3xl wa-font-extrabold wa-text-primary-900 wa-mb-4">Unlock the Power of <span class="wa-text-accent-600">Modern Web UI</span></h1>
+                    <p class="wa-text-lg wa-text-gray-700 wa-mb-8 wa-max-w-xl">Build responsive, beautiful web experiences with ease using Web Awesome, the ultimate UI library for developers.</p>
+                    <div class="wa-flex wa-gap-4">
+                        <button class="wa-button wa-button-primary wa-button-lg wa-rounded-full wa-shadow-lg wa-hover-shadow-xl wa-transition-shadow">Get Started</button>
+                        <button popovertarget="more-info-popover" class="wa-button wa-button-outline wa-button-lg wa-rounded-full wa-text-primary-800 wa-border-primary-800 wa-hover-bg-primary-100 wa-transition-colors">Learn More</button>
+                    </div>
+                </div>
+                <div class="wa-hero-illustration wa-flex wa-justify-center wa-items-center wa-relative">
+                    <!-- More complex illustrative SVG for a modern feel -->
+                    <svg class="wa-w-full wa-max-w-lg" viewBox="0 0 700 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background shapes -->
+                        <rect x="70" y="60" width="560" height="330" rx="30" fill="#EBF8FF" class="wa-shadow-xl"/>
+                        <!-- Main screen -->
+                        <rect x="100" y="80" width="500" height="280" rx="15" fill="white" class="wa-shadow-lg"/>
+                        <!-- Browser controls -->
+                        <circle cx="125" cy="100" r="8" fill="#FF5C5C"/>
+                        <circle cx="145" cy="100" r="8" fill="#FFBD44"/>
+                        <circle cx="165" cy="100" r="8" fill="#00CA4E"/>
+                        <!-- Code lines -->
+                        <rect x="190" y="95" width="200" height="10" rx="3" fill="#E2E8F0"/>
+                        <rect x="120" y="130" width="460" height="12" rx="3" fill="#E2E8F0"/>
+                        <rect x="120" y="155" width="400" height="12" rx="3" fill="#E2E8F0"/>
+                        <rect x="120" y="180" width="350" height="12" rx="3" fill="#E2E8F0"/>
+                        <rect x="120" y="205" width="460" height="12" rx="3" fill="#E2E8F0"/>
+
+                        <!-- Floating elements (e.g., component blocks) -->
+                        <rect x="500" y="220" width="120" height="80" rx="10" fill="#6EE7B7" class="wa-shadow-md wa-animate-float"/>
+                        <rect x="420" y="300" width="100" height="60" rx="10" fill="#93C5FD" class="wa-shadow-md wa-animate-float wa-delay-1"/>
+
+                        <!-- Additional details -->
+                        <path d="M50 200L100 250L50 300Z" fill="#FDBA74" class="wa-opacity-75"/>
+                        <path d="M650 150L600 200L650 250Z" fill="#FDBA74" class="wa-opacity-75"/>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="wa-features wa-py-20 wa-bg-white">
+            <div class="wa-container wa-mx-auto wa-text-center wa-px-4">
+                <h2 class="wa-heading wa-heading-2xl wa-font-extrabold wa-text-primary-900 wa-mb-12">Powerful <span class="wa-text-accent-600">Features</span></h2>
+                <div class="feature-cards-container">
+                    <div class="feature-card wa-p-8 wa-rounded-2xl wa-shadow-lg wa-hover-shadow-xl wa-transition-all">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="wa-icon wa-mb-4 wa-text-accent-500">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 12L12 16L16 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <h3 class="wa-heading wa-heading-lg wa-font-bold wa-mb-2 wa-text-primary-800">Responsive Design</h3>
+                        <p class="wa-text-gray-600">Adapt to any screen size using robust media and container queries for perfect layouts.</p>
+                    </div>
+                    <div class="feature-card wa-p-8 wa-rounded-2xl wa-shadow-lg wa-hover-shadow-xl wa-transition-all">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="wa-icon wa-mb-4 wa-text-green-500">
+                            <path d="M10 13L15 8L21 14V17L15 11L10 16L3 9V6L10 13Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <h3 class="wa-heading wa-heading-lg wa-font-bold wa-mb-2 wa-text-primary-800">Dynamic UI</h3>
+                        <p class="wa-text-gray-600">Craft engaging, interactive interfaces leveraging the native Popover API and advanced `:has` selector.</p>
+                    </div>
+                    <div class="feature-card wa-p-8 wa-rounded-2xl wa-shadow-lg wa-hover-shadow-xl wa-transition-all has-image">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="wa-icon wa-mb-4 wa-text-blue-500">
+                            <path d="M14.5 10C14.5 12.4853 12.4853 14.5 10 14.5C7.51472 14.5 5.5 12.4853 5.5 10C5.5 7.51472 7.51472 5.5 10 5.5C12.4853 5.5 14.5 7.51472 14.5 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12.5 10C12.5 12.4853 10.4853 14.5 8 14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M18 18L13 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10 2L10 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14.5 10L18 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5.5 10L2 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10 14.5L10 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10 22C15.5228 22 20 17.5228 20 12C20 6.47715 15.5228 2 10 2C4.47715 2 0 6.47715 0 12C0 17.5228 4.47715 22 10 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <h3 class="wa-heading wa-heading-lg wa-font-bold wa-mb-2 wa-text-primary-800">SVG Magic</h3>
+                        <p class="wa-text-gray-600">Utilize scalable, high-performance vector graphics that look amazing everywhere.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="wa-footer wa-bg-primary-900 wa-text-white wa-py-8 wa-text-center">
+        <div class="wa-container wa-mx-auto">
+            <p class="wa-text-sm">&copy; 2024 Web Awesome App. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Popover for "Learn More" -->
+    <div id="more-info-popover" popover class="wa-popover wa-bg-white wa-rounded-xl wa-shadow-2xl wa-p-6 wa-text-gray-800 wa-border wa-border-gray-200">
+        <h3 class="wa-heading wa-heading-md wa-font-bold wa-mb-3 wa-text-primary-900">Discover Web Awesome</h3>
+        <p class="wa-text-base wa-mb-4">Explore a comprehensive UI library with modern components, robust patterns, flexible color variables, and cutting-edge web development features.</p>
+        <button popovertargetaction="hide" class="wa-button wa-button-sm wa-button-secondary wa-rounded-full">Got It!</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

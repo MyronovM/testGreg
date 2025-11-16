@@ -1,0 +1,249 @@
+/* Import Web Awesome CSS - Pinned Version */
+@import url('https://cdn.webawesome.com/v1.0.0-beta.1/webawesome.css');
+
+/* Custom CSS Variables for a more modern palette (optional, but good for consistency) */
+:root {
+    --wa-color-accent-400: #6366F1; /* Example accent color: Indigo 400 */
+    --wa-color-accent-300: #818CF8; /* Lighter accent for hovers */
+    --wa-color-accent-600: #4F46E5; /* Darker accent for highlights */
+    --wa-color-gradient-start: var(--wa-color-primary-100);
+    --wa-color-gradient-end: var(--wa-color-blue-50);
+}
+
+/* Base Styles & Typography Enhancements */
+body {
+    font-family: var(--wa-font-sans); /* Use Web Awesome's sans-serif font */
+    color: var(--wa-color-gray-800);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-weight: var(--wa-font-bold);
+    letter-spacing: -0.025em; /* Slightly tighter letter-spacing for headings */
+}
+
+/* Header & Navigation */
+.wa-header {
+    background-color: var(--wa-color-primary-900);
+    color: var(--wa-color-white);
+    /* Adding a subtle shadow for depth */
+    box-shadow: var(--wa-shadow-sm);
+    z-index: 100; /* Ensure header is above other content */
+    position: relative; /* For z-index to work */
+}
+
+.wa-logo svg {
+    /* Use the accent color for the SVG inside the logo */
+    color: var(--wa-color-accent-400);
+    transition: transform 0.3s ease;
+}
+
+.wa-logo:hover svg {
+    transform: rotate(5deg) scale(1.05);
+}
+
+/* Navigation - Modernized hovers and transitions */
+.wa-nav-link {
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.wa-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--wa-color-accent-300);
+    transition: width 0.3s ease-out;
+}
+
+.wa-nav-link:hover::after,
+.wa-nav-link.active::after { /* Add an active state for current page */
+    width: 100%;
+}
+
+/* Media Queries for Responsive Navigation */
+@media (max-width: 768px) {
+    .wa-nav {
+        display: none; /* Hidden by default for mobile */
+        position: absolute;
+        top: 100%; /* Position below the header */
+        left: 0;
+        right: 0;
+        background-color: var(--wa-color-primary-800);
+        flex-direction: column;
+        width: 100%;
+        padding: 1rem 0;
+        box-shadow: var(--wa-shadow-lg);
+        transition: all 0.3s ease-in-out;
+        transform: translateY(-10px); /* Initial subtle offset */
+        opacity: 0;
+        pointer-events: none; /* Disable interaction when hidden */
+    }
+
+    .wa-nav.active {
+        display: flex;
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all; /* Enable interaction when active */
+    }
+
+    .wa-nav-list {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem; /* Adjust gap for vertical list */
+    }
+
+    .wa-nav-link {
+        padding: 0.75rem 1rem;
+        width: 100%;
+        text-align: center;
+    }
+    .wa-nav-link::after {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0; /* Reset for mobile */
+    }
+    .wa-nav-link:hover::after,
+    .wa-nav-link.active::after {
+        width: 80%; /* Adjust width for mobile underline */
+    }
+
+    .wa-hidden-lg {
+        display: block; /* Show hamburger icon */
+    }
+}
+
+@media (min-width: 769px) {
+    .wa-hidden-lg {
+        display: none; /* Hide hamburger icon on larger screens */
+    }
+}
+
+/* Hero Section - Enhanced Design */
+.wa-hero {
+    /* Using custom gradient with Web Awesome colors */
+    background: linear-gradient(to bottom right, var(--wa-color-gradient-start), var(--wa-color-gradient-end));
+    position: relative;
+    overflow: hidden; /* Contains floating elements */
+}
+
+/* Floating animation for hero illustration elements */
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.wa-animate-float {
+    animation: float 4s ease-in-out infinite;
+    animation-delay: 0s; /* Default */
+}
+
+.wa-animate-float.wa-delay-1 {
+    animation-delay: 1s; /* Staggered animation */
+}
+
+/* Features Section - Container Queries and :has with Modern Styling */
+.feature-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem; /* Increased gap for cleaner separation */
+    padding: 1rem;
+    container-type: inline-size;
+    container-name: feature-container;
+}
+
+.feature-card {
+    background-color: var(--wa-color-white);
+    border-radius: var(--wa-rounded-2xl); /* More rounded corners */
+    box-shadow: var(--wa-shadow-xl); /* Deeper shadow */
+    padding: 2.5rem;
+    text-align: center;
+    border: none; /* Remove default border for cleaner look */
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Smooth transitions */
+    display: flex; /* Flexbox for consistent internal layout */
+    flex-direction: column;
+    align-items: center;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px); /* More pronounced lift on hover */
+    box-shadow: var(--wa-shadow-2xl); /* Even deeper shadow on hover */
+}
+
+.feature-card svg {
+    width: 4rem; /* Larger icons */
+    height: 4rem;
+    margin-bottom: 1.5rem; /* Increased space below icon */
+    fill: none; /* Ensure no default fill for stroke icons */
+}
+
+.feature-card h3 {
+    line-height: 1.3;
+}
+
+.feature-card p {
+    font-size: var(--wa-text-md);
+    line-height: 1.5;
+}
+
+
+/* Container Query: Adjust card layout for wider containers */
+@container feature-container (min-width: 768px) {
+    .feature-card {
+        flex-direction: row; /* Horizontal layout */
+        text-align: left;
+        align-items: flex-start; /* Align icon/text to top */
+        gap: 2rem;
+        padding: 2rem 2.5rem;
+    }
+    .feature-card svg {
+        margin-bottom: 0;
+        flex-shrink: 0; /* Prevent icon from shrinking */
+    }
+    .feature-card h3 {
+        margin-top: 0; /* Reset top margin for horizontal layout */
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* :has pseudo-selector example - Refined styling */
+/* Apply a distinct background to cards containing an image (conceptually, an SVG with a fill) */
+.feature-card:has(svg.wa-text-blue-500) { /* Targeting based on specific SVG class/color */
+    background-color: var(--wa-color-blue-50); /* Light blue accent */
+    border: 1px solid var(--wa-color-blue-200); /* Subtle border */
+}
+
+/* Popover Styling - More modern look */
+.wa-popover {
+    max-width: 350px; /* Slightly wider */
+    border: 1px solid var(--wa-color-gray-200);
+    border-radius: var(--wa-rounded-xl); /* More rounded */
+    box-shadow: var(--wa-shadow-2xl); /* Deeper shadow */
+    padding: 1.5rem;
+    animation: fadeIn 0.3s ease-out; /* Subtle fade-in animation */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.wa-popover button {
+    font-weight: var(--wa-font-medium);
+}
+
+/* Footer Enhancements */
+.wa-footer {
+    background-color: var(--wa-color-primary-900);
+    color: var(--wa-color-white);
+    padding: 2rem 0;
+    font-size: var(--wa-text-sm);
+}
+
+.wa-footer p {
+    opacity: 0.8;
+}
