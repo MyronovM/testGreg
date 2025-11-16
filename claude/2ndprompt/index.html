@@ -807,5 +807,72 @@
                             <stop offset="100%" style="stop-color:#4f46e5;stop-opacity:1" />
                         </linearGradient>
                     </defs>
-                    <rect x="15" y="15" width="70" height="70" rx="8" fill="url(#grad1)" opacity="0.9"/>
-                    <circle cx="50" cy="50"
+                    <circle cx="50" cy="50" r="40" fill="url(#grad3)" opacity="0.9"/>
+                    <path d="M 40 50 L 50 60 L 65 45" stroke="white" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h4>Graphics</h4>
+                <p>Interactive elements</p>
+            </div>
+        </section>
+
+        <section class="tech-section" role="region" aria-label="Technologies used">
+            <h2>Web APIs & Technologies</h2>
+            <p>Built with proven standards and cutting-edge features</p>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h3>🎯 Popover API</h3>
+                    <p>Native browser popovers with automatic positioning, keyboard handling, and click-outside dismissal for seamless interactions.</p>
+                    <span class="tech-badge">Native API</span>
+                </div>
+                <div class="tech-item">
+                    <h3>📦 Container Queries</h3>
+                    <p>Style components based on their container size, not viewport. Perfect for reusable, component-driven libraries.</p>
+                    <span class="tech-badge">CSS Layout</span>
+                </div>
+                <div class="tech-item">
+                    <h3>🔍 :has Selector</h3>
+                    <p>Parent-dependent styling based on child state. Cards change appearance when child links are hovered or focused.</p>
+                    <span class="tech-badge">CSS Selector</span>
+                </div>
+                <div class="tech-item">
+                    <h3>📱 Media Queries</h3>
+                    <p>Responsive breakpoints for mobile, tablet, and desktop with optimized layouts and typography at every size.</p>
+                    <span class="tech-badge">Responsive</span>
+                </div>
+                <div class="tech-item">
+                    <h3>🎨 SVG Graphics</h3>
+                    <p>Scalable vector graphics with gradients, filters, and interactive animations. Resolution-independent and performant.</p>
+                    <span class="tech-badge">Vector</span>
+                </div>
+                <div class="tech-item">
+                    <h3>⚡ Performance</h3>
+                    <p>Optimized CSS, minimal animations, fixed library versions, and semantic HTML for fast, reliable user experiences.</p>
+                    <span class="tech-badge">Optimized</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div popover="auto" id="featurePopover1">
+        <h3>📱 Responsive Design</h3>
+        <p>This page uses both media queries for viewport-based breakpoints (480px, 768px, 1024px) and container queries for intelligent component-level responsiveness. Try resizing your browser to see the adaptive layouts in action.</p>
+        <button class="popover-close" popovertarget="featurePopover1" popooveraction="hide">Close</button>
+    </div>
+
+    <div popover="auto" id="featurePopover2">
+        <h3>🚀 Modern Web APIs</h3>
+        <p>Built with the latest web standards: Popover API for native dialogs, Container Queries for context-aware styling, and :has selector for dynamic parent-child relationships. All APIs pinned to stable versions for reliability.</p>
+        <button class="popover-close" popovertarget="featurePopover2" popooveraction="hide">Close</button>
+    </div>
+
+    <div popover="auto" id="featurePopover3">
+        <h3>♿ Accessible & Performant</h3>
+        <p>Built with semantic HTML5, ARIA attributes for screen readers, keyboard navigation, and focus management. Optimized CSS animations and minimal dependencies ensure fast load times.</p>
+        <button class="popover-close" popovertarget="featurePopover3" popooveraction="hide">Close</button>
+    </div>
+
+    <footer role="contentinfo">
+        <p>&copy; 2024 Web Awesome. Built with modern web standards and pinned dependencies.</p>
+    </footer>
+</body>
+</html>
