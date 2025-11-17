@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web Awesome - Modern Web Components with cutting-edge APIs">
+    <title>Web Awesome - Next-Gen Components</title>
+    <script type="module" src="https://webawesome.com/components/index.js@5.2.0"></script>
+    <link rel="stylesheet" href="https://webawesome.com/components/index.css@5.2.0">
+    <style>
+        /* ============================================
+           RESET & BASE STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ============================================
+           CSS VARIABLES & THEMING
+           ============================================ */
+        :root {
+            --wa-primary: #6366f1;
+            --wa-primary-dark: #4f46e5;
+            --wa-primary-light: #818cf8;
+            --wa-secondary: #ec4899;
+            --wa-accent: #06b6d4;
+            --wa-success: #10b981;
+            --wa-warning: #f59e0b;
+            --wa-danger: #ef4444;
+            
+            --wa-bg-base: #0f172a;
+            --wa-bg-elevated: #1e293b;
+            --wa-bg-hover: #334155;
+            --wa-bg-surface: #1a1f35;
+            
+            --wa-text-primary: #f1f5f9;
+            --wa-text-secondary: #cbd5e1;
+            --wa-text-tertiary: #94a3b8;
+            
+            --wa-border: #334155;
+            --wa-border-light: #475569;
+            
+            --wa-shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+            --wa-shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+            --wa-shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            --wa-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+            --wa-shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            
+            --wa-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --wa-transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            --wa-transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ============================================
+           BASE TYPOGRAPHY
+           ============================================ */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--wa-text-primary);
+            background: linear-gradient(
+                135deg,
+                var(--wa-bg-base) 0%,
+                var(--wa-bg-surface) 50%,
+                var(--wa-bg-base) 100%
+            );
+            background-attachment: fixed;
+            line-height: 1.6;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        /* ============================================
+           HEADER/HERO SECTION
+           ============================================ */
+        .header-container {
+            container-type: inline-size;
+            position: relative;
+            overflow: hidden;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--wa-bg-elevated) 0%, var(--wa-bg-surface) 100%);
+            border-bottom: 1px solid var(--wa-border);
+        }
+
+        .header-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--wa-primary) 0%, transparent 70%);
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .header-container::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--wa-secondary) 0%, transparent 70%);
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+        }
+
+        .header-content h1 {
+            font-size: clamp(1.75rem, 5vw, 3.5rem);
+            background: linear-gradient(135deg, var(--wa-primary-light) 0%, var(--wa-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .header-content p {
+            font-size: clamp(0.95rem, 2vw, 1.25rem);
+            color: var(--wa-text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .header-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        @container (min-width: 768px) {
+            .header-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                align-items: center;
+                gap: 3rem;
+                padding: 5rem 4rem;
+            }
+
+            .hero-decoration {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero-decoration {
+                display: none;
+            }
+        }
+
+        /* ============================================
+           BUTTONS
+           ============================================ */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--wa-primary) 0%, var(--wa-primary-dark) 100%);
+            color: white;
+            padding: 0.875rem 1.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid transparent;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all var(--wa-transition-fast);
+            box-shadow: var(--wa-shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 100%);
+            opacity: 0;
+            transition: opacity var(--wa-transition-fast);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--wa-shadow-lg);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: var(--wa-text-primary);
+            padding: 0.875rem 1.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--wa-border-light);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all var(--wa-transition-fast);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--wa-primary-light);
+            background: rgba(99, 102, 241, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================
+           MAIN CONTENT
+           ============================================ */
+        main {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* ============================================
+           FEATURES SECTION
+           ============================================ */
+        .features-intro {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .features-intro h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+            color: var(--wa-text-primary);
+        }
+
+        .features-intro p {
+            font-size: 1.05rem;
+            color: var(--wa-text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature-card {
+            container-type: inline-size;
+            position: relative;
+            background: linear-gradient(135deg, var(--wa-bg-elevated) 0%, var(--wa-bg-surface) 100%);
+            border: 1px solid var(--wa-border);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            transition: all var(--wa-transition-base);
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(99, 102, 241, 0.05) 100%);
+            opacity: 0;
+            transition: opacity var(--wa-transition-base);
+            pointer-events: none;
+        }
+
+        .feature-card:hover {
+            border-color: var(--wa-primary-light);
+            transform: translateY(-6px);
+            box-shadow: var(--wa-shadow-xl);
+            background: linear-gradient(135deg, var(--wa-bg-surface) 0%, var(--wa-bg-elevated) 100%);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-icon-container {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--wa-primary) 0%, var(--wa-secondary) 100%);
+            border-radius: 0.625rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            transition: transform var(--wa-transition-base);
+        }
+
+        .feature-card:hover .feature-icon-container {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .feature-icon {
+            width: 28px;
+            height: 28px;
+            fill: white;
+        }
+
+        @container (min-width: 400px) {
+            .feature-card h3 {
+                font-size: 1.25rem;
+            }
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            color: var(--wa-text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            color: var(--wa-text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .feature-card:has(.read-more:hover) {
+            border-color: var(--wa-secondary);
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            color: var(--wa-primary-light);
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0;
+            font-size: 0.95rem;
+            transition: all var(--wa-transition-fast);
+        }
+
+        .read-more::after {
+            content: '→';
+            transition: transform var(--wa-transition-fast);
+        }
+
+        .read-more:hover {
+            color: var(--wa-secondary);
+            gap: 0.75rem;
+        }
+
+        /* ============================================
+           SVG DEMO SECTION
+           ============================================ */
+        .svg-demo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--wa-bg-elevated) 0%, var(--wa-bg-surface) 100%);
+            border: 1px solid var(--wa-border);
+            border-radius: 1rem;
+        }
+
+        .svg-item {
+            text-align: center;
+            transition: transform var(--wa-transition-base);
+        }
+
+        .svg-item:hover {
+            transform: translateY(-4px);
+        }
+
+        .svg-item svg {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1rem;
+            transition: transform var(--wa-transition-base);
+            filter: drop-shadow(0 4px 12px rgba(99, 102, 241, 0.15));
+        }
+
+        .svg-item svg:hover {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .svg-item h4 {
+            font-size: 1rem;
+            color: var(--wa-text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .svg-item p {
+            font-size: 0.9rem;
+            color: var(--wa-text-secondary);
+        }
+
+        /* ============================================
+           TECH SECTION
+           ============================================ */
+        .tech-section {
+            background: linear-gradient(135deg, var(--wa-bg-elevated) 0%, var(--wa-bg-surface) 100%);
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            border: 1px solid var(--wa-border);
+            margin: 4rem 0;
+        }
+
+        .tech-section h2 {
+            color: var(--wa-text-primary);
+            margin-bottom: 0.5rem;
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+        }
+
+        .tech-section > p {
+            color: var(--wa-text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .tech-item {
+            background: var(--wa-bg-base);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid var(--wa-primary);
+            transition: all var(--wa-transition-base);
+            border: 1px solid var(--wa-border);
+            border-left-width: 4px;
+            border-left-color: var(--wa-primary);
+        }
+
+        .tech-item:hover {
+            transform: translateX(4px);
+            border-left-color: var(--wa-secondary);
+            background: var(--wa-bg-elevated);
+        }
+
+        .tech-item h3 {
+            color: var(--wa-text-primary);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tech-item p {
+            color: var(--wa-text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .tech-badge {
+            display: inline-flex;
+            background: linear-gradient(135deg, var(--wa-primary) 0%, var(--wa-primary-dark) 100%);
+            color: white;
+            padding: 0.375rem 0.875rem;
+            border-radius: 0.375rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: var(--wa-shadow-sm);
+        }
+
+        /* ============================================
+           POPOVER STYLES
+           ============================================ */
+        [popover] {
+            position: fixed;            /* force modal positioning */
+            top: 50%;                   /* vertical center */
+            left: 50%;                  /* horizontal center */
+            transform: translate(-50%, -50%); /* correction offset */
+            padding: 2rem;
+            border-radius: 1.25rem;
+            background: var(--wa-bg-elevated);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+            animation: fadeScale 0.25s ease;
+            max-width: 420px;
+            width: 90%;
+        }
+
+        @keyframes fadeScale {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.85);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        [popover]::backdrop {
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(6px);
+        }
+
+        [popover] h3 {
+            color: var(--wa-primary-light);
+            margin-bottom: 1rem;
+            font-size: 1.35rem;
+        }
+
+        [popover] p {
+            color: var(--wa-text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .popover-close {
+            background: transparent;
+            color: var(--wa-text-primary);
+            padding: 0.75rem 1.25rem;
+            border: 1px solid var(--wa-border-light);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all var(--wa-transition-fast);
+        }
+
+        .popover-close:hover {
+            background: var(--wa-primary);
+            border-color: var(--wa-primary);
+            color: white;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        footer {
+            background: linear-gradient(135deg, var(--wa-bg-elevated) 0%, var(--wa-bg-surface) 100%);
+            color: var(--wa-text-secondary);
+            text-align: center;
+            padding: 2.5rem 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid var(--wa-border);
+            font-size: 0.95rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN
+           ============================================ */
+        @media (max-width: 1024px) {
+            main {
+                padding: 3rem 1.5rem;
+            }
+
+            .tech-section {
+                padding: 2.5rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 3rem 1.5rem;
+            }
+
+            .header-content h1 {
+                font-size: 2rem;
+            }
+
+            .header-content p {
+                font-size: 1rem;
+            }
+
+            .header-cta {
+                gap: 0.75rem;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .features-grid {
+                gap: 1.5rem;
+            }
+
+            .tech-grid {
+                gap: 1.5rem;
+            }
+
+            .svg-demo {
+                gap: 1.5rem;
+                padding: 2rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            main {
+                padding: 2rem 1rem;
+            }
+
+            .header-container {
+                padding: 2.5rem 1rem;
+            }
+
+            .header-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .header-content p {
+                font-size: 0.9rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .header-cta {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .svg-demo {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 1.5rem 1rem;
+            }
+
+            [popover] {
+                max-width: 90vw;
+                padding: 1.5rem;
+            }
+
+            .features-intro h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* ============================================
+           UTILITIES & ACCESSIBILITY
+           ============================================ */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--wa-primary-light);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header-container" role="banner">
+        <div class="header-content">
+            <h1>Web Awesome</h1>
+            <p>Next-generation components with cutting-edge Web APIs</p>
+            <div class="header-cta">
+                <button class="btn-primary" popovertarget="infoPopover" aria-label="Learn more about Web Awesome">
+                    Learn More
+                </button>
+                <button class="btn-secondary" popovertarget="quickStartPopover" aria-label="Quick start guide">
+                    Quick Start
+                </button>
+            </div>
+        </div>
+        <div class="hero-decoration">
+            <svg class="hero-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" role="presentation">
+                <defs>
+                    <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#6366f1;stop-opacity:0.3" />
+                        <stop offset="100%" style="stop-color:#ec4899;stop-opacity:0.3" />
+                    </linearGradient>
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+                <circle cx="150" cy="150" r="130" fill="url(#heroGradient)" stroke="#6366f1" stroke-width="1.5" opacity="0.5" filter="url(#glow)"/>
+                <g transform="translate(150, 150)">
+                    <circle r="80" fill="none" stroke="#6366f1" stroke-width="1" opacity="0.2"/>
+                    <circle r="60" fill="none" stroke="#ec4899" stroke-width="1" opacity="0.2"/>
+                    <circle r="40" fill="none" stroke="#06b6d4" stroke-width="1" opacity="0.2"/>
+                    <circle cx="0" cy="-50" r="6" fill="#6366f1"/>
+                    <circle cx="35" cy="35" r="6" fill="#ec4899"/>
+                    <circle cx="-35" cy="35" r="6" fill="#06b6d4"/>
+                </g>
+            </svg>
+        </div>
+    </header>
+
+    <div popover="auto" id="infoPopover">
+        <h3>🚀 Welcome to Web Awesome</h3>
+        <p>This landing page showcases modern Web APIs combined with premium design principles. Experience responsive layouts, smooth animations, and interactive components built with current web standards.</p>
+        <button class="popover-close" popovertarget="infoPopover" popooveraction="hide">Close</button>
+    </div>
+
+    <div popover="auto" id="quickStartPopover">
+        <h3>⚡ Quick Start</h3>
+        <p>Get started with Web Awesome by exploring the feature cards below. Click "Learn More" on any card to discover more details about each technology.</p>
+        <button class="popover-close" popovertarget="quickStartPopover" popooveraction="hide">Close</button>
+    </div>
+
+    <main role="main">
+        <section class="features-intro">
+            <h2>Modern Web Technologies</h2>
+            <p>Explore cutting-edge APIs that power next-generation web applications</p>
+        </section>
+
+        <section class="features-grid" role="region" aria-label="Feature cards">
+            <article class="feature-card">
+                <div class="feature-content">
+                    <div class="feature-icon-container" aria-hidden="true">
+                        <svg class="feature-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <h3>Responsive Design</h3>
+                    <p>Adapts flawlessly to every screen size using modern CSS media queries and container queries for component-level responsiveness.</p>
+                    <button class="read-more" popovertarget="featurePopover1" aria-label="Learn more about responsive design">Learn More</button>
+                </div>
+            </article>
+
+            <article class="feature-card">
+                <div class="feature-content">
+                    <div class="feature-icon-container" aria-hidden="true">
+                        <svg class="feature-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
+                        </svg>
+                    </div>
+                    <h3>Modern APIs</h3>
+                    <p>Built with Popover API, Container Queries, and :has selector—cutting-edge standards for interactive, adaptive experiences.</p>
+                    <button class="read-more" popovertarget="featurePopover2" aria-label="Learn more about modern APIs">Learn More</button>
+                </div>
+            </article>
+
+            <article class="feature-card">
+                <div class="feature-content">
+                    <div class="feature-icon-container" aria-hidden="true">
+                        <svg class="feature-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                        </svg>
+                    </div>
+                    <h3>Accessible & Performant</h3>
+                    <p>Semantic HTML, ARIA attributes, and optimized code ensure inclusive experiences that work fast for everyone.</p>
+                    <button class="read-more" popovertarget="featurePopover3" aria-label="Learn more about accessibility">Learn More</button>
+                </div>
+            </article>
+        </section>
+
+        <section class="svg-demo" role="region" aria-label="SVG demonstration">
+            <div class="svg-item">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#4f46e5;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect x="15" y="15" width="70" height="70" rx="8" fill="url(#grad1)" opacity="0.9"/>
+                    <circle cx="50" cy="50" r="20" fill="white" opacity="0.8"/>
+                </svg>
+                <h4>Shapes</h4>
+                <p>Scalable vector graphics</p>
+            </div>
+            <div class="svg-item">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ec4899;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#f43f5e;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M 50 15 L 85 75 L 15 75 Z" fill="url(#grad2)" opacity="0.9"/>
+                    <circle cx="50" cy="40" r="8" fill="white" opacity="0.8"/>
+                </svg>
+                <h4>Vectors</h4>
+                <p>Dynamic illustrations</p>
+            </div>
+            <div class="svg-item">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <defs>
+                        <radialGradient id="grad3">
+                            <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#0891b2;stop-opacity:1" />
+                        </radialGradient>
+                    </defs>
+                    <circle cx="50" cy="50" r="40" fill="url(#grad3)" opacity="0.9"/>
+                    <path d="M 40 50 L 50 60 L 65 45" stroke="white" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h4>Graphics</h4>
+                <p>Interactive elements</p>
+            </div>
+        </section>
+
+        <section class="tech-section" role="region" aria-label="Technologies used">
+            <h2>Web APIs & Technologies</h2>
+            <p>Built with proven standards and cutting-edge features</p>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h3>🎯 Popover API</h3>
+                    <p>Native browser popovers with automatic positioning, keyboard handling, and click-outside dismissal for seamless interactions.</p>
+                    <span class="tech-badge">Native API</span>
+                </div>
+                <div class="tech-item">
+                    <h3>📦 Container Queries</h3>
+                    <p>Style components based on their container size, not viewport. Perfect for reusable, component-driven libraries.</p>
+                    <span class="tech-badge">CSS Layout</span>
+                </div>
+                <div class="tech-item">
+                    <h3>🔍 :has Selector</h3>
+                    <p>Parent-dependent styling based on child state. Cards change appearance when child links are hovered or focused.</p>
+                    <span class="tech-badge">CSS Selector</span>
+                </div>
+                <div class="tech-item">
+                    <h3>📱 Media Queries</h3>
+                    <p>Responsive breakpoints for mobile, tablet, and desktop with optimized layouts and typography at every size.</p>
+                    <span class="tech-badge">Responsive</span>
+                </div>
+                <div class="tech-item">
+                    <h3>🎨 SVG Graphics</h3>
+                    <p>Scalable vector graphics with gradients, filters, and interactive animations. Resolution-independent and performant.</p>
+                    <span class="tech-badge">Vector</span>
+                </div>
+                <div class="tech-item">
+                    <h3>⚡ Performance</h3>
+                    <p>Optimized CSS, minimal animations, fixed library versions, and semantic HTML for fast, reliable user experiences.</p>
+                    <span class="tech-badge">Optimized</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div popover="auto" id="featurePopover1">
+        <h3>📱 Responsive Design</h3>
+        <p>This page uses both media queries for viewport-based breakpoints (480px, 768px, 1024px) and container queries for intelligent component-level responsiveness. Try resizing your browser to see the adaptive layouts in action.</p>
+        <button class="popover-close" popovertarget="featurePopover1" popooveraction="hide">Close</button>
+    </div>
+
+    <div popover="auto" id="featurePopover2">
+        <h3>🚀 Modern Web APIs</h3>
+        <p>Built with the latest web standards: Popover API for native dialogs, Container Queries for context-aware styling, and :has selector for dynamic parent-child relationships. All APIs pinned to stable versions for reliability.</p>
+        <button class="popover-close" popovertarget="featurePopover2" popooveraction="hide">Close</button>
+    </div>
+
+    <div popover="auto" id="featurePopover3">
+        <h3>♿ Accessible & Performant</h3>
+        <p>Built with semantic HTML5, ARIA attributes for screen readers, keyboard navigation, and focus management. Optimized CSS animations and minimal dependencies ensure fast load times.</p>
+        <button class="popover-close" popovertarget="featurePopover3" popooveraction="hide">Close</button>
+    </div>
+
+    <footer role="contentinfo">
+        <p>&copy; 2024 Web Awesome. Built with modern web standards and pinned dependencies.</p>
+    </footer>
+</body>
+</html>
